@@ -63,29 +63,43 @@ class VismaImport extends Import
         $item->Localization->AssignmentLoc->WorkDescr = implode("\r\n", array(
             $details->Assignment->Localization->AssignmentLoc->DepartmentDescr,
             PHP_EOL . PHP_EOL . "  <!--more-->". PHP_EOL . PHP_EOL,
+            '<div class="work-description">',
             '<h2>'. __('Work Description', 'job-listings') .'</h2>',
             $details->Assignment->Localization->AssignmentLoc->WorkDescr,
+            '</div>',
+            '<div class="qualifications">',
             '<h2>'. __('Qualifications', 'job-listings') .'</h2>',
             $details->Assignment->Localization->AssignmentLoc->Qualifications,
+            '</div>',
+            '<div class="other">',
             '<h2>'. __('Other', 'job-listings') .'</h2>',
-            $details->Assignment->Localization->AssignmentLoc->AdditionalInfo
+            $details->Assignment->Localization->AssignmentLoc->AdditionalInfo,
+            '</div>'
         ));
 
         //Contacts
-        $item->contact = array(); 
-        if(isset($details->Assignment->Localization->AssignmentLoc->ContactPersons->ContactPerson) && is_object($details->Assignment->Localization->AssignmentLoc->ContactPersons->ContactPerson) && !empty($details->Assignment->Localization->AssignmentLoc->ContactPersons->ContactPerson)) {
-            foreach($details->Assignment->Localization->AssignmentLoc->ContactPersons->ContactPerson as $key => $detail) {
-                $item->contact[] = array(
-                    'name' => isset($detail->ContactName) ? reset($detail->ContactName) : '',
-                    'phone' => isset($detail->Telephone) ? (string) $detail->Telephone : '',
-                    'phone_sanitized' => isset($detail->Telephone) ? preg_replace('/\D/', '', (string) $detail->Telephone) : '',
-                    'position' => isset($detail->Title) ? reset($detail->Title) : ''
-                );
+
+        $item->contact = array();
+        $contactPersons = $details->Assignment->Localization->AssignmentLoc->ContactPersons; 
+        
+        
+        if(isset($contactPersons) && is_object($contactPersons) && !empty($contactPersons)) {
+            $contactPersons = json_decode(json_encode($contactPersons), true);
+
+            foreach( $contactPersons as $contacts) {
+                if(array_key_exists('0', $contacts)) {
+                    foreach($contacts as  $contact) {
+                        $item->contact[] = $this->getContact($contact);
+                    }
+                } else {
+                    $item->contact[] = $this->getContact($contacts);
+                }
             }
         }
 
         return $item; 
     }
+
 
     /**
      * Add manual import button
@@ -175,7 +189,11 @@ class VismaImport extends Import
                         }
                     }
                 }
+
             }
+
+            // Store uuid for later comparison when deleting old posts.
+            $this->importedUuids[] = $dataObject['uuid'];
 
             //Get matching post
             $postObject = $this->getPost(
@@ -220,7 +238,6 @@ class VismaImport extends Import
                     );
                 }
             }
-
             // Taxonomies - Work categories
             $this->updateTaxonomy($postId, 'occupationclassifications', 'job-listing-category', $dataObject); 
 
@@ -293,15 +310,31 @@ class VismaImport extends Import
             )
         );
 
-        //Create array with simple xml
+        //Create object with simple xml
         try {
-            $data = simplexml_load_string($data);
+            $data = new \JobListings\Helper\EncodeXML($data, false);
+
         } catch (Exception $e) {
             if (!strstr($e->getMessage(), 'XML')) {
                 throw $e;
             }
         }
 
-        return $data; 
+        return $data->encodedData; 
+    }
+
+
+    /**
+     * Get contact array
+     * @return array
+     */
+    private function getContact($item){
+        return array(
+            'name' => isset($item['ContactName']) ? $item['ContactName'] : '',
+            'phone' => isset($item['Telephone']) ? $item['Telephone'] : '',
+            'phone_sanitized' => isset($item['Telephone']) ? preg_replace('/\D/', '',  $item['Telephone']) : '',
+            'position' => isset($item['Title']) ? $item['Title'] : '',
+            'email' => isset($item['Email']) ? $item['Email'] : ''
+        );
     }
 }

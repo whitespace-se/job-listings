@@ -126,17 +126,20 @@ class Import
         // Translate url's & to &amp;
         $data = str_replace("&", "&amp;", $data);
 
-        // Create array with simple xml
+        // Create object with simple xml
         try {
-            $data = simplexml_load_string($data);
+            $data = new \JobListings\Helper\EncodeXML($data, false);
+
         } catch (Exception $e) {
             if (!strstr($e->getMessage(), 'XML')) {
                 throw $e;
             }
         }
 
-        $data = $data->xpath($this->baseNode. "/" . $this->subNode);
-
+        
+        
+        $data = $data->encodedData->{$this->baseNode}->{$this->subNode};
+        
         // Check if valid list, update jobs
         if (isset($data) && !empty($data)) {
             foreach ($data as $item) {
