@@ -55,6 +55,12 @@ class Controller
       $data['isExpired'] = $this->isExpired(); 
       $data['sourceSystem'] = $this->getSourceSystem(); 
 
+      if( empty($data['preamble']) ) {
+        $post_content = get_extended($post->post_content);
+        $data['preamble'] = $post_content['main']; 
+        $data['content'] = $post_content['extended']; 
+      } 
+
       return $data; 
     }
 
