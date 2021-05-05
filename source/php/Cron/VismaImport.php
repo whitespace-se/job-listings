@@ -61,19 +61,19 @@ class VismaImport extends Import
         //Get full text
         $details = $this->getDetails($item->Guid);
         $item->Localization->AssignmentLoc->WorkDescr = implode("\r\n", array(
-            $details->Assignment->Localization->AssignmentLoc->DepartmentDescr,
+            nl2br($details->Assignment->Localization->AssignmentLoc->DepartmentDescr),
             PHP_EOL . PHP_EOL . "  <!--more-->". PHP_EOL . PHP_EOL,
             '<div class="work-description">',
             '<h2>'. __('Work Description', 'job-listings') .'</h2>',
-            $details->Assignment->Localization->AssignmentLoc->WorkDescr,
+            '<p>' . nl2br($details->Assignment->Localization->AssignmentLoc->WorkDescr) . '</p>',
             '</div>',
             '<div class="qualifications">',
             '<h2>'. __('Qualifications', 'job-listings') .'</h2>',
-            $details->Assignment->Localization->AssignmentLoc->Qualifications,
+            '<p>' . nl2br($details->Assignment->Localization->AssignmentLoc->Qualifications) . '</p>',
             '</div>',
             '<div class="other">',
             '<h2>'. __('Other', 'job-listings') .'</h2>',
-            $details->Assignment->Localization->AssignmentLoc->AdditionalInfo,
+            '<p>' . nl2br($details->Assignment->Localization->AssignmentLoc->AdditionalInfo) . '</p>',
             '</div>'
         ));
 

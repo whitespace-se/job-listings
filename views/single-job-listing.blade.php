@@ -48,7 +48,7 @@
 
                                                 @isset($preamble)
                                                     <p class="lead">
-                                                        {!! nl2br($preamble) !!}
+                                                        {!! $preamble !!}
                                                     </p>
                                                 @endisset
 
