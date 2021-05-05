@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Job Listings\n"
-"POT-Creation-Date: 2020-06-08 12:08+0200\n"
-"PO-Revision-Date: 2020-06-08 12:09+0200\n"
+"POT-Creation-Date: 2021-05-05 17:08+0200\n"
+"PO-Revision-Date: 2021-05-05 17:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: job-listings.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -36,7 +36,7 @@ msgstr "Visma"
 msgid "ReachMee"
 msgstr "Reachmee"
 
-#: source/php/AcfFields/php/settings.php:188
+#: source/php/AcfFields/php/settings.php:242
 msgid "Add Source"
 msgstr "Lägg till källa"
 
@@ -52,23 +52,23 @@ msgstr "Jobb"
 msgid "Available jobs"
 msgstr "Lediga jobb"
 
-#: source/php/App.php:38
+#: source/php/App.php:39
 msgid "Job categories"
 msgstr "Jobbkategorier"
 
-#: source/php/App.php:39
+#: source/php/App.php:40
 msgid "Job category"
 msgstr "Jobbkategori"
 
-#: source/php/App.php:43 source/php/App.php:64
+#: source/php/App.php:44 source/php/App.php:65
 msgid "Job Categories"
 msgstr "Jobbkategorier"
 
-#: source/php/App.php:59
+#: source/php/App.php:60
 msgid "Sources"
 msgstr "Källor"
 
-#: source/php/App.php:60
+#: source/php/App.php:61
 msgid "Source"
 msgstr "Källa"
 
@@ -78,23 +78,23 @@ msgid "%sImport done%s %s Data has been imported with %s method. %s"
 msgstr ""
 "%sImport genomförd%s %s Informationen har importerats med metoden %s. %s"
 
-#: source/php/Cron/ReachmeeImport.php:85
+#: source/php/Cron/ReachmeeImport.php:126
 msgid "Start Reachmee Import"
 msgstr "Starta Reachmee import"
 
-#: source/php/Cron/VismaImport.php:66
+#: source/php/Cron/VismaImport.php:67
 msgid "Work Description"
 msgstr "Arbetsuppgifter"
 
-#: source/php/Cron/VismaImport.php:68
+#: source/php/Cron/VismaImport.php:71
 msgid "Qualifications"
 msgstr "Kvalifikationer"
 
-#: source/php/Cron/VismaImport.php:70
-msgid "Other"
-msgstr "Övrigt"
+#: source/php/Cron/VismaImport.php:75
+msgid "Other information"
+msgstr "Övrig information"
 
-#: source/php/Cron/VismaImport.php:98
+#: source/php/Cron/VismaImport.php:112
 msgid "Start Visma Import"
 msgstr "Starta Visma import"
 
@@ -159,15 +159,6 @@ msgstr "Lägg till Ny %s"
 msgid "New %s Name"
 msgstr "Nytt %s namn"
 
-#: vendor/helsingborg-stad/acf-export-manager/src/AcfExportManager.php:364
-msgid "Export with AcfExportManager"
-msgstr ""
-
-#: vendor/helsingborg-stad/acf-export-manager/src/AcfExportManager.php:408
-#, php-format
-msgid "Exported %d fieldgroup(s)."
-msgstr ""
-
 #: views/archive-job-listing.blade.php:85
 msgid "Position"
 msgstr "Tjänst"
@@ -216,7 +207,7 @@ msgstr "Ansök"
 msgid "Deadline for applications:"
 msgstr "Sista ansökningsdatum:"
 
-#: views/single-job-listing.blade.php:98 views/single-job-listing.blade.php:211
+#: views/single-job-listing.blade.php:98 views/single-job-listing.blade.php:219
 msgid "days left"
 msgstr "dagar kvar"
 
@@ -256,19 +247,19 @@ msgstr "Förvaltning:"
 msgid "Contact"
 msgstr "Kontakt"
 
-#: views/single-job-listing.blade.php:204
+#: views/single-job-listing.blade.php:212
 msgid "The application period has ended"
 msgstr "Ansökningstiden har gått ut."
 
-#: views/single-job-listing.blade.php:210
+#: views/single-job-listing.blade.php:218
 msgid "Apply here"
 msgstr "Ansök här"
 
-#: views/single-job-listing.blade.php:216
+#: views/single-job-listing.blade.php:224
 msgid "Log in"
 msgstr "Logga in"
 
-#: views/single-job-listing.blade.php:236
+#: views/single-job-listing.blade.php:244
 msgid "Close"
 msgstr "Stäng"
 
@@ -283,6 +274,9 @@ msgstr "(# Plugin_url #)"
 #. Author of the plugin/theme
 msgid "Nikolas Ramstedt, Sebastian Thulin & Johan Silvergrund"
 msgstr ""
+
+#~ msgid "Other"
+#~ msgstr "Övrigt"
 
 #~ msgid "View application"
 #~ msgstr "Visa ansökan"
