@@ -123,11 +123,11 @@
                                     </li>
                                 @endif
 
-                                @if($expreience)
+                                @if($experience)
                                     <li class="gutter gutter-top">
                                         <b><?php _e('Experience:', 'job-listings'); ?></b>
                                         <br/>
-                                        {{ $expreience }}
+                                        {{ $experience }}
                                     </li>
                                 @endif
 

@@ -45,7 +45,7 @@ class Controller
       $data['referenceId'] = $this->getMeta('ad_reference_nbr');
       $data['projectNr'] = $this->getMeta('uuid');
       $data['numberOfPositions'] = $this->getMeta('number_of_positions'); 
-      $data['expreience'] = $this->getMeta('number_of_positions'); 
+      $data['experience'] = $this->getMeta('work_experience'); 
       $data['employmentType'] = $this->getMeta('employment_type'); 
       $data['employmentGrade'] = $this->getMeta('employment_grade'); 
       $data['department'] = $this->getMeta('departments'); 
