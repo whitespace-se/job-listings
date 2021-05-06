@@ -29,7 +29,11 @@ class App
                 'with_front' => false
             ),
             'taxonomies' => array(),
-            'supports' => array('title', 'revisions', 'editor')
+            'supports' => array('title', 'revisions', 'editor'),
+            'capabilities' => array(
+                'create_posts' => 'do_not_allow', 
+            ),
+            'map_meta_cap' => true
         ));
 
         // Add view paths
