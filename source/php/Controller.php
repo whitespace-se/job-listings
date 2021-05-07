@@ -39,6 +39,7 @@ class Controller
       $data['applyLink'] = ($this->getSourceSystem() == 'reachmee') ? '#job-listings-modal' : $this->getMeta('external_url'); 
       $data['preamble'] = $this->getMeta('preamble');  
       $data['content'] = apply_filters('the_content', $this->post->post_content); 
+      $data['featuredImage'] = $this->getMeta('featured_image'); 
       $data['legal'] = $this->getMeta('legal_details'); 
       $data['startDate'] = $this->getMeta('publish_start_date'); 
       $data['endDate'] = $this->getMeta('publish_end_date'); 

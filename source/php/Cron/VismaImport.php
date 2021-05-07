@@ -60,6 +60,8 @@ class VismaImport extends Import
 
         //Get full text
         $details = $this->getDetails($item->Guid);
+
+        $item->featuredImage = $details->Assignment->DepartmentMediaBankDocuments->DepartmentMediaBankDocument->Url;
         $item->Localization->AssignmentLoc->WorkDescr = implode("\r\n", array(
             nl2br($details->Assignment->Localization->AssignmentLoc->DepartmentDescr),
             PHP_EOL . PHP_EOL . "  <!--more-->". PHP_EOL . PHP_EOL,
@@ -288,6 +290,7 @@ class VismaImport extends Import
                 "OccupationClassification",
                 "Name"
             ),
+            'featured_image' => array("featuredImage"),
             'source_system' => 'Visma',
             'has_expired' => array("hasExpired"),
             'number_of_days_left' => array("numberOfDaysLeft"),
