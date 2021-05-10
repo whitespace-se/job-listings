@@ -51,11 +51,12 @@ class VismaImport extends Import
         $item->EmploymentEndDate = date("Y-m-d", strtotime($item->EmploymentEndDate));
         $item->EmploymentEndDate = date("Y-m-d", strtotime($item->EmploymentEndDate));
         $item->Modified = date("Y-m-d", strtotime($item->Modified));
-        $item->hasExpired = strtotime($item->PublishEndDate) >= time() ? '0' : '1';
+        $item->hasExpired = strtotime('+1 day', strtotime($item->PublishEndDate)) >= time() ? '0' : '1';
         $item->numberOfDaysLeft = date_diff(
             date_create(date("Y-m-d", time())), 
-            date_create($item->ApplicationEndDate)
+            date_create(date("Y-m-d", strtotime('+1 day', $item->ApplicationEndDate)))
         )->days;
+
         $item->ReadMoreUrl = $this->settings['apply_base_link'] . $item->Guid; 
 
         //Get full text
