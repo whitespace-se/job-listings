@@ -63,12 +63,12 @@ class VismaImport extends Import
         $details = $this->getDetails($item->Guid);
 
         $item->featuredImage = $details->Assignment->DepartmentMediaBankDocuments->DepartmentMediaBankDocument->Url;
-        $item->Localization->AssignmentLoc->WorkDescr = implode("\r\n", array(
+        $item->Localization->AssignmentLoc->AdDescription = implode("\r\n", array(
             nl2br($details->Assignment->Localization->AssignmentLoc->DepartmentDescr),
             PHP_EOL . PHP_EOL . "  <!--more-->". PHP_EOL . PHP_EOL,
             '<div class="work-description">',
             '<h2>'. __('Work Description', 'job-listings') .'</h2>',
-            '<p>' . nl2br($details->Assignment->Localization->AssignmentLoc->WorkDescr) . '</p>',
+            '<p>' . nl2br($details->Assignment->Localization->AssignmentLoc->AdDescription) . '</p>',
             '</div>',
             '<div class="qualifications">',
             '<h2>'. __('Qualifications', 'job-listings') .'</h2>',
@@ -266,7 +266,7 @@ class VismaImport extends Import
             'uuid' => array("@attributes", "AssignmentId"),
             'guid' => array("Guid"),
             'post_title' => array("Localization", "AssignmentLoc", "AssignmentTitle"),
-            'post_content' => array("Localization", "AssignmentLoc", "WorkDescr"),
+            'post_content' => array("Localization", "AssignmentLoc", "AdDescription"),
             'publish_start_date' => array("PublishStartDate"),
             'publish_end_date' => array("PublishEndDate"),
             'application_end_date' => array("ApplicationEndDate"),
