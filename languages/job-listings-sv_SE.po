@@ -92,7 +92,7 @@ msgstr "Kvalifikationer"
 
 #: source/php/Cron/VismaImport.php:75
 msgid "Other information"
-msgstr "Övrig information"
+msgstr "Om artbetsplatsen"
 
 #: source/php/Cron/VismaImport.php:112
 msgid "Start Visma Import"
