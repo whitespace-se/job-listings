@@ -75,7 +75,7 @@ class VismaImport extends Import
             // '<p>' . nl2br($details->Assignment->Localization->AssignmentLoc->Qualifications) . '</p>',
             // '</div>',
             '<div class="other">',
-            '<h2>'. __('Other information', 'job-listings') .'</h2>',
+            '<h1>'. __('Other information', 'job-listings') .'</h1>',
             '<p>' . nl2br($details->Assignment->Localization->AssignmentLoc->AdditionalInfo) . '</p>',
             '</div>'
         ));
