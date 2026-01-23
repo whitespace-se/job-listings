@@ -28,7 +28,7 @@
         }
     ],
     "require": {
-        "composer/installers": "~1.0",
+        "composer/installers": "^2.3",
         "helsingborg-stad/acf-export-manager": ">=1.0.0"
     },
     "config": {
